@@ -236,6 +236,8 @@ class ProcessConfiguration:
         self._add_to_env(env, extra)
         if WINDOWS:
             env = {key.upper(): env[key] for key in env}
+            # Keep secret names matching the keys, so __str__ masks them.
+            self.secret_env_keys = [key.upper() for key in self.secret_env_keys]
         return env
 
     def _get_initial_env(self, env, extra):
