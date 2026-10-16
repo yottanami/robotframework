@@ -20,18 +20,18 @@ Start Process with Stdin as Secret
 
 Secret in environment variable via env Dict
     ${tc} =    Check Test Case    ${TESTNAME}
-    Check Log Message    ${tc[1, 1]}    *env:*'v1': '<secret>'*    level=DEBUG    pattern=yes
+    Check Log Message    ${tc[1, 1]}    *env:*'[vV]1': '<secret>'*    level=DEBUG    pattern=yes
     Secret should not be logged    ${tc[1, 1]}
 
 Secret in environment variable via env:name Syntax
     ${tc} =    Check Test Case    ${TESTNAME}
-    Check Log Message    ${tc[0, 1]}    *env:*'v2': '<secret>'*    level=DEBUG    pattern=yes
+    Check Log Message    ${tc[0, 1]}    *env:*'[vV]2': '<secret>'*    level=DEBUG    pattern=yes
     Secret should not be logged    ${tc[0, 1]}
 
 Multiple Secrets in environment variables
     ${tc} =    Check Test Case    ${TESTNAME}
-    Check Log Message    ${tc[0, 1]}    *env:*'v1': '<secret>'*    level=DEBUG    pattern=yes
-    Check Log Message    ${tc[0, 1]}    *env:*'v3': '<secret>'*    level=DEBUG    pattern=yes
+    Check Log Message    ${tc[0, 1]}    *env:*'[vV]1': '<secret>'*    level=DEBUG    pattern=yes
+    Check Log Message    ${tc[0, 1]}    *env:*'[vV]3': '<secret>'*    level=DEBUG    pattern=yes
     Secret should not be logged    ${tc[0, 1]}
 
 *** Keywords ***
